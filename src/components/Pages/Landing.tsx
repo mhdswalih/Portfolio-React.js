@@ -1,4 +1,4 @@
-import { useState, useEffect, type ReactEventHandler } from 'react';
+import { useState, useEffect } from 'react';
 import { Github, Linkedin, Mail, ArrowRight, Code2, Sparkles, ExternalLink } from 'lucide-react';
 import imageMain from '../../assets/img/bg-1.png'
 import aboutImg from '../../assets/img/WhatsApp Image 2024-02-12 at 12.12.02_0837d19f.jpg'
@@ -53,7 +53,7 @@ const ScrambledText = ({
 
         const timer = setTimeout(() => {
             const interval = setInterval(() => {
-                setText(finalText.split('').map((letter, index) => {
+                setText(finalText.split('').map((_letter, index) => {
                     if (index < iteration) {
                         return finalText[index];
                     }
@@ -472,7 +472,7 @@ const Landing = () => {
                                         { name: 'Express', value: 85, color: 'from-gray-400 to-gray-600' },
                                         { name: 'React', value: 88, color: 'from-blue-400 to-blue-600' },
                                         { name: 'Node.js', value: 87, color: 'from-green-500 to-green-700' }
-                                    ].map((skill, index) => (
+                                    ].map((skill) => (
                                         <div key={skill.name} className="flex flex-col items-center">
                                             <div className="relative w-20 h-20">
                                                 <div className="absolute inset-0 bg-gray-700 rounded-full"></div>
