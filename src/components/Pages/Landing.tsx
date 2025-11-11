@@ -11,7 +11,7 @@ import Gme from '../../assets/img/Projects/gamemem.png'
 import ImgGen from '../../assets/img/Projects/imagegen.png'
 import userMan from '../../assets/img/Projects/usermang.png'
 import FameZero from '../../assets/img/Projects/Screenshot 2025-10-07 192432.png'
-import resume from '../../assets/Resume/swalih mc.pdf'
+import resume from '../../assets/Resume/Muhammed Swalih.pdf'
 
 // Particles Component (simplified for demo)
 const Particles = ({ className }: { className?: string }) => {
