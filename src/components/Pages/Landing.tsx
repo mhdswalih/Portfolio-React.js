@@ -112,7 +112,7 @@ const Landing = () => {
                             href={`#${item}`}
                             className="px-4 py-2 text-gray-500 hover:text-green-400 hover:bg-white/5 transition-all duration-200 text-xs tracking-widest uppercase rounded"
                         >
-                            <span className="text-green-400/40">{String(i + 1).padStart(2, '0')}.</span> {item}
+                            <span className="text-green-400/40"></span> {item}
                         </a>
                     ))}
                 </div>
@@ -191,9 +191,9 @@ const Landing = () => {
                             <p><span className="text-white/20">{'}'}</span></p>
                             <p className="pt-2 text-green-400">▋<span className="animate-pulse">_</span></p>
                         </div>
-                        <div className="overflow-hidden rounded-b-lg h-48">
+                        {/* <div className="overflow-hidden rounded-b-lg h-48">
                             <img src={imageMain} alt="hero" className="w-full h-full object-cover opacity-60" />
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
