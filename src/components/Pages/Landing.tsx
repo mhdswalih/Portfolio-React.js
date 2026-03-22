@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Github, Linkedin, Mail, ArrowRight, Code2, ExternalLink } from 'lucide-react';
-import imageMain from '../../assets/img/bg-1.png'
 import aboutImg from '../../assets/img/WhatsApp Image 2024-02-12 at 12.12.02_0837d19f.jpg'
 import thengapod from '../../assets/img/Projects/thengapod.png'
 import ECom from '../../assets/img/Projects/E-Com.png'
@@ -106,7 +105,7 @@ const Landing = () => {
             {/* ── NAVBAR ── */}
             <nav className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
                 <div className="flex items-center gap-1 px-2 py-2 bg-black/80 backdrop-blur-xl border border-white/10 rounded-lg shadow-2xl">
-                    {['home', 'about', 'skills', 'projects'].map((item, i) => (
+                    {['home', 'about', 'skills', 'projects'].map((item) => (
                         <a
                             key={item}
                             href={`#${item}`}
@@ -164,9 +163,9 @@ const Landing = () => {
                             { href: 'https://github.com/mhdswalih?tab=repositories', icon: <Github className="w-4 h-4" />, label: 'github' },
                             { href: 'https://www.linkedin.com/in/muhammed-swalih-mc-a39485329/', icon: <Linkedin className="w-4 h-4" />, label: 'linkedin' },
                             { href: 'mailto:ctmswalihmc@gmail.com', icon: <Mail className="w-4 h-4" />, label: 'email' },
-                        ].map((s) => (
-                            <a key={s.label} href={s.href} className="flex items-center gap-2 px-3 py-2 border border-white/10 hover:border-green-400/40 text-gray-500 hover:text-green-400 text-xs rounded transition-all duration-200">
-                                {s.icon} {s.label}
+                        ].map(({ href, icon, label }) => (
+                            <a key={label} href={href} className="flex items-center gap-2 px-3 py-2 border border-white/10 hover:border-green-400/40 text-gray-500 hover:text-green-400 text-xs rounded transition-all duration-200">
+                                {icon} {label}
                             </a>
                         ))}
                     </div>
@@ -191,9 +190,6 @@ const Landing = () => {
                             <p><span className="text-white/20">{'}'}</span></p>
                             <p className="pt-2 text-green-400">▋<span className="animate-pulse">_</span></p>
                         </div>
-                        {/* <div className="overflow-hidden rounded-b-lg h-48">
-                            <img src={imageMain} alt="hero" className="w-full h-full object-cover opacity-60" />
-                        </div> */}
                     </div>
                 </div>
             </div>
@@ -432,9 +428,9 @@ const Landing = () => {
                             { href: 'https://github.com/mhdswalih?tab=repositories', icon: <Github className="w-4 h-4" />, label: 'github' },
                             { href: 'https://www.linkedin.com/in/muhammed-swalih-mc-a39485329/', icon: <Linkedin className="w-4 h-4" />, label: 'linkedin' },
                             { href: 'mailto:ctmswalihmc@gmail.com', icon: <Mail className="w-4 h-4" />, label: 'email' },
-                        ].map((s) => (
-                            <a key={s.label} href={s.href} className="flex items-center gap-1.5 px-3 py-1.5 border border-white/10 hover:border-green-400/40 text-gray-600 hover:text-green-400 text-xs rounded transition-all duration-200">
-                                {s.icon} {s.label}
+                        ].map(({ href, icon, label }) => (
+                            <a key={label} href={href} className="flex items-center gap-1.5 px-3 py-1.5 border border-white/10 hover:border-green-400/40 text-gray-600 hover:text-green-400 text-xs rounded transition-all duration-200">
+                                {icon} {label}
                             </a>
                         ))}
                     </div>
