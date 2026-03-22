@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Github, Linkedin, Mail, ArrowRight, Code2, Sparkles, ExternalLink } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowRight, Code2, ExternalLink } from 'lucide-react';
 import imageMain from '../../assets/img/bg-1.png'
 import aboutImg from '../../assets/img/WhatsApp Image 2024-02-12 at 12.12.02_0837d19f.jpg'
 import thengapod from '../../assets/img/Projects/thengapod.png'
@@ -13,83 +13,11 @@ import userMan from '../../assets/img/Projects/usermang.png'
 import FameZero from '../../assets/img/Projects/Screenshot 2025-10-07 192432.png'
 import resume from '../../assets/Resume/Muhammed Swalih.pdf'
 
-// Particles Component (simplified for demo)
-const Particles = ({ className }: { className?: string }) => {
-    return (
-        <div className={className}>
-            {[...Array(50)].map((_, i) => (
-                <div
-                    key={i}
-                    className="absolute w-1 h-1 bg-white rounded-full animate-pulse"
-                    style={{
-                        left: `${Math.random() * 100}%`,
-                        top: `${Math.random() * 100}%`,
-                        animationDelay: `${Math.random() * 3}s`,
-                        opacity: Math.random() * 0.5 + 0.2
-                    }}
-                />
-            ))}
-        </div>
-    );
-};
-
-// ScrambledText Component (simplified)
-const ScrambledText = ({
-    children,
-    className,
-    delay = 0
-}: {
-    children: string;
-    className?: string;
-    delay?: number;
-}) => {
-    const [text, setText] = useState('');
-    const [isComplete, setIsComplete] = useState(false);
-
-    useEffect(() => {
-        const chars = '!<>-_\\/[]{}—=+*^?#________';
-        const finalText = children;
-        let iteration = 0;
-
-        const timer = setTimeout(() => {
-            const interval = setInterval(() => {
-                setText(finalText.split('').map((_letter, index) => {
-                    if (index < iteration) {
-                        return finalText[index];
-                    }
-                    return chars[Math.floor(Math.random() * chars.length)];
-                }).join(''));
-
-                if (iteration >= finalText.length) {
-                    clearInterval(interval);
-                    setIsComplete(true);
-                }
-
-                iteration += 1 / 3;
-            }, 30);
-
-            return () => clearInterval(interval);
-        }, delay);
-
-        return () => clearTimeout(timer);
-    }, [children, delay]);
-
-    return <span className={className}>{isComplete ? children : text}</span>;
-};
-
 const Landing = () => {
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
         setIsVisible(true);
-
-        const handleMouseMove = (e: { clientX: any; clientY: any; }) => {
-            setMousePosition({ x: e.clientX, y: e.clientY });
-        };
-
-        window.addEventListener('mousemove', handleMouseMove);
-        return () => window.removeEventListener('mousemove', handleMouseMove);
     }, []);
 
     const projects = [
@@ -150,7 +78,7 @@ const Landing = () => {
         },
         {
             title: 'Memory Game',
-            description: 'An interactive card-flipping memory game built with React. Players match pairs of cards while tracking score and moves. Designed with responsive layout and smooth animations.',
+            description: 'An interactive card-flipping memory game built with React. Players match pairs of cards while tracking score and moves.',
             tech: ['React', 'CSS'],
             demo: 'https://memmory-game-using-react.vercel.app/',
             code: 'https://github.com/mhdswalih/MemmoryGame-Using-React',
@@ -158,460 +86,357 @@ const Landing = () => {
         },
         {
             title: 'User Management System',
-            description: 'A full-stack user management system built with React and Node.js. It allows admins to add, edit, and delete users with secure CRUD operations. Integrated Cloudinary for image uploads and efficient storage. Designed with a clean UI and responsive dashboard.',
+            description: 'A full-stack user management system with secure CRUD operations, Cloudinary image uploads, and responsive dashboard.',
             tech: ['React', 'Node.js', 'Express', 'MongoDB', 'Cloudinary'],
             demo: '#',
             code: 'https://github.com/mhdswalih/Jwt-frontend',
             image: userMan
         }
-
     ];
 
     return (
-        <div className='relative bg-black w-full min-h-screen overflow-hidden'>
-            {/* Animated gradient background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-black to-blue-900/20" />
+        <div className='relative p-15 bg-black w-full min-h-screen overflow-hidden font-mono'>
 
-            {/* Radial gradient that follows mouse */}
-            <div
-                className="absolute w-[500px] h-[500px] rounded-full opacity-20 blur-3xl transition-all duration-300 pointer-events-none"
-                style={{
-                    background: 'radial-gradient(circle, rgba(139,92,246,0.4) 0%, transparent 70%)',
-                    left: mousePosition.x - 250,
-                    top: mousePosition.y - 250,
-                }}
-            />
+            {/* Subtle grid overlay */}
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
+            {/* Faint green glow top-left */}
+            <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-green-500/5 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
 
-            <Particles className='absolute inset-0 w-full h-full' />
-
-            {/* Grid overlay */}
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:100px_100px]" />
-
-            {/* Navigation Bar */}
+            {/* ── NAVBAR ── */}
             <nav className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
-                <div className="flex items-center gap-8 px-8 py-4 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl">
-                    <a href="#home" className="text-white hover:text-purple-400 transition-all duration-300 font-medium text-sm tracking-wide relative group">
-                        Home
-                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-400 transition-all duration-300 group-hover:w-full" />
-                    </a>
-                    <a href="#about" className="text-white hover:text-purple-400 transition-all duration-300 font-medium text-sm tracking-wide relative group">
-                        About
-                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-400 transition-all duration-300 group-hover:w-full" />
-                    </a>
-                    <a href="#skills" className="text-white hover:text-purple-400 transition-all duration-300 font-medium text-sm tracking-wide relative group">
-                        Skills
-                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-400 transition-all duration-300 group-hover:w-full" />
-                    </a>
-                    <a href="#projects" className="text-white hover:text-purple-400 transition-all duration-300 font-medium text-sm tracking-wide relative group">
-                        Projects
-                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-400 transition-all duration-300 group-hover:w-full" />
-                    </a>
+                <div className="flex items-center gap-1 px-2 py-2 bg-black/80 backdrop-blur-xl border border-white/10 rounded-lg shadow-2xl">
+                    {['home', 'about', 'skills', 'projects'].map((item, i) => (
+                        <a
+                            key={item}
+                            href={`#${item}`}
+                            className="px-4 py-2 text-gray-500 hover:text-green-400 hover:bg-white/5 transition-all duration-200 text-xs tracking-widest uppercase rounded"
+                        >
+                            <span className="text-green-400/40">{String(i + 1).padStart(2, '0')}.</span> {item}
+                        </a>
+                    ))}
                 </div>
             </nav>
 
-            {/* Main Content */}
-            <div id='home' className="relative z-10 flex flex-col lg:flex-row items-center justify-between w-full max-w-7xl mx-auto px-6 min-h-screen pt-32 pb-20">
-                {/* Text Section */}
+            {/* ── HOME ── */}
+            <div id='home' className="relative z-10 w-full max-w-7xl mx-auto px-6 min-h-screen flex flex-col lg:flex-row items-center justify-between pt-32 pb-20">
+
+                {/* Left */}
                 <div className={`flex flex-col items-start space-y-8 lg:w-1/2 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
-                    {/* Badge */}
-                    <div className="flex items-center gap-2 px-4 py-2 bg-purple-500/10 border border-purple-500/20 rounded-full backdrop-blur-sm">
-                        <Sparkles className="w-4 h-4 text-purple-400" />
-                        <span className="text-purple-300 text-sm font-medium">Available for work</span>
+
+                    <div className="flex items-center gap-3">
+                        <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                        <span className="text-green-400 text-xs tracking-widest uppercase">available for work</span>
                     </div>
 
-                    {/* Main Heading */}
-                    <div className="space-y-4">
-                        <ScrambledText className="text-5xl lg:text-7xl font-bold bg-gradient-to-r from-white via-purple-200 to-purple-400 bg-clip-text text-transparent leading-tight">
-                            Hey...
-                        </ScrambledText>
-
-                        <div className="space-y-2">
-                            <h2 className="text-2xl lg:text-3xl text-gray-300 font-light">
-                                I'm <span className="text-white font-semibold">Muhammed Swalih MC</span>
-                            </h2>
-                            <ScrambledText
-                                className="text-xl lg:text-2xl text-gray-400 font-light"
-                                delay={500}
-                            >
-                                MERN Stack Developer
-                            </ScrambledText>
-                        </div>
+                    <div className="space-y-3">
+                        <p className="text-gray-600 text-sm tracking-widest">// greeting</p>
+                        <h1 className="text-6xl lg:text-8xl font-black text-white leading-none">
+                            <span className="text-white/15">00.</span> HEY
+                        </h1>
+                        <div className="h-px bg-gradient-to-r from-green-400/60 via-white/10 to-transparent w-full" />
+                        <h2 className="text-xl text-gray-400 font-light pt-2">
+                            I'm <span className="text-white font-bold">Muhammed Swalih MC</span>
+                        </h2>
+                        <p className="text-green-400 text-lg">
+                            <span className="text-gray-600">{'>'}_</span> MERN Stack Developer
+                        </p>
                     </div>
 
-                    {/* Description */}
-                    <p className="text-gray-400 text-lg leading-relaxed max-w-xl">
+                    <p className="text-gray-500 text-sm leading-relaxed max-w-md border-l border-white/10 pl-4">
                         Crafting seamless web experiences with modern technologies.
                         Passionate about building scalable applications that make a difference.
                     </p>
 
-                    {/* CTA Buttons */}
-                    <div className="flex flex-wrap gap-4 pt-4">
-                        <a href='#projects' className="group flex items-center gap-2 px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-xl transition-all duration-300 shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 hover:scale-105">
-                            <span className="font-medium">View My Work</span>
+                    <div className="flex flex-wrap gap-3 pt-2">
+                        <a href='#projects' className="group flex items-center gap-2 px-5 py-2.5 bg-green-400 hover:bg-green-300 text-black text-sm font-bold rounded transition-all duration-200">
+                            view_work()
                             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </a>
-
-                        <a href={resume} download='Muhammed Swalih MC Resume.pdf' className="flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-xl transition-all duration-300 backdrop-blur-sm hover:scale-105">
+                        <a href={resume} download='Muhammed Swalih MC Resume.pdf' className="flex items-center gap-2 px-5 py-2.5 border border-white/10 hover:border-green-400/50 text-gray-400 hover:text-green-400 text-sm rounded transition-all duration-200">
                             <Code2 className="w-4 h-4" />
-                            <span className="font-medium">Download CV</span>
+                            download_cv()
                         </a>
                     </div>
 
-                    {/* Social Links */}
-                    <div className="flex items-center gap-4 pt-4">
-                        <a href="https://github.com/mhdswalih?tab=repositories" className="p-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl transition-all duration-300 hover:scale-110 hover:border-purple-500/50 group">
-                            <Github className="w-5 h-5 text-gray-400 group-hover:text-purple-400 transition-colors" />
-                        </a>
-                        <a href="https://www.linkedin.com/in/muhammed-swalih-mc-a39485329/" className="p-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl transition-all duration-300 hover:scale-110 hover:border-purple-500/50 group">
-                            <Linkedin className="w-5 h-5 text-gray-400 group-hover:text-purple-400 transition-colors" />
-                        </a>
-                        <a href="mailto:ctmswalihmc@gmail.com" className="p-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl transition-all duration-300 hover:scale-110 hover:border-purple-500/50 group">
-                            <Mail className="w-5 h-5 text-gray-400 group-hover:text-purple-400 transition-colors" />
-                        </a>
+                    <div className="flex items-center gap-3 pt-2">
+                        {[
+                            { href: 'https://github.com/mhdswalih?tab=repositories', icon: <Github className="w-4 h-4" />, label: 'github' },
+                            { href: 'https://www.linkedin.com/in/muhammed-swalih-mc-a39485329/', icon: <Linkedin className="w-4 h-4" />, label: 'linkedin' },
+                            { href: 'mailto:ctmswalihmc@gmail.com', icon: <Mail className="w-4 h-4" />, label: 'email' },
+                        ].map((s) => (
+                            <a key={s.label} href={s.href} className="flex items-center gap-2 px-3 py-2 border border-white/10 hover:border-green-400/40 text-gray-500 hover:text-green-400 text-xs rounded transition-all duration-200">
+                                {s.icon} {s.label}
+                            </a>
+                        ))}
                     </div>
                 </div>
 
-                {/* Image Section */}
+                {/* Right — terminal card */}
                 <div className={`mt-16 lg:mt-0 lg:w-1/2 flex justify-center transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
-                    <div className="relative">
-                        {/* Glowing orb behind image */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/30 to-blue-500/30 rounded-full blur-3xl scale-110 animate-pulse" />
+                    <div className="w-full max-w-md border border-white/10 rounded-lg overflow-hidden bg-black/60 backdrop-blur-sm">
+                        <div className="flex items-center gap-2 px-4 py-3 bg-white/5 border-b border-white/10">
+                            <div className="w-3 h-3 rounded-full bg-red-500/70" />
+                            <div className="w-3 h-3 rounded-full bg-yellow-500/70" />
+                            <div className="w-3 h-3 rounded-full bg-green-500/70" />
+                            <span className="ml-3 text-xs text-gray-500">~/swalih/profile.json</span>
+                        </div>
+                        <div className="p-6 text-sm space-y-1 text-gray-400 leading-loose">
+                            <p><span className="text-white/20">{'{'}</span></p>
+                            <p className="pl-4"><span className="text-blue-400">"name"</span><span className="text-white/20">:</span> <span className="text-green-300">"Muhammed Swalih MC"</span><span className="text-white/20">,</span></p>
+                            <p className="pl-4"><span className="text-blue-400">"role"</span><span className="text-white/20">:</span> <span className="text-green-300">"MERN Stack Developer"</span><span className="text-white/20">,</span></p>
+                            <p className="pl-4"><span className="text-blue-400">"location"</span><span className="text-white/20">:</span> <span className="text-yellow-300">"Kerala, India"</span><span className="text-white/20">,</span></p>
+                            <p className="pl-4"><span className="text-blue-400">"status"</span><span className="text-white/20">:</span> <span className="text-green-400">"open_to_work"</span><span className="text-white/20">,</span></p>
+                            <p className="pl-4"><span className="text-blue-400">"focus"</span><span className="text-white/20">:</span> <span className="text-pink-300">"full-stack"</span></p>
+                            <p><span className="text-white/20">{'}'}</span></p>
+                            <p className="pt-2 text-green-400">▋<span className="animate-pulse">_</span></p>
+                        </div>
+                        <div className="overflow-hidden rounded-b-lg h-48">
+                            <img src={imageMain} alt="hero" className="w-full h-full object-cover opacity-60" />
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                        {/* Decorative rings */}
-                        <div className="absolute inset-0 border border-purple-500/20 rounded-full scale-110 animate-ping" style={{ animationDuration: '3s' }} />
-                        <div className="absolute inset-0 border border-blue-500/20 rounded-full scale-125 animate-ping" style={{ animationDuration: '4s' }} />
+            <div className="w-full max-w-7xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" /></div>
 
-                        {/* Image container with placeholder */}
-                        <div className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-br backdrop-blur-sm  flex items-center justify-center overflow-hidden">
-                            <div className="text-center p-8">
-                                {/* <Code2 className="w-24 h-24 text-purple-400/50 mx-auto mb-4" /> */}
-                                <img src={imageMain} className="w-400  text-gray-400 text-sm" />
+            {/* ── ABOUT ── */}
+            <div id='about' className="relative z-10 w-full max-w-7xl mx-auto px-6 min-h-screen flex flex-col lg:flex-row items-center justify-between pt-32 pb-20">
+
+                {/* Left */}
+                <div className={`flex flex-col items-start space-y-8 lg:w-1/2 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
+                    <div className="flex items-center gap-3 mb-2">
+                        <div className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
+                        <span className="text-blue-400 text-xs tracking-widest uppercase">about.md</span>
+                    </div>
+                    <h2 className="font-black text-6xl lg:text-8xl text-white leading-none">
+                        <span className="text-white/15">02.</span> ABOUT
+                    </h2>
+                    <div className="h-px bg-gradient-to-r from-blue-400/60 via-white/10 to-transparent w-3/4" />
+
+                    <div className="space-y-4 text-gray-500 text-sm leading-relaxed max-w-xl border-l border-white/10 pl-4">
+                        <p><span className="text-blue-400">/*</span></p>
+                        <p>I am <span className="text-white">very passionate about creating websites</span> and digital experiences that combine beautiful design with robust functionality.</p>
+                        <p>As a dedicated <span className="text-green-400">MERN Stack Developer</span>, I specialize in building full-stack applications using MongoDB, Express.js, React, and Node.js.</p>
+                        <p>What drives me is the endless possibility to innovate and create meaningful digital products that make a difference in people's lives.</p>
+                        <p><span className="text-blue-400">*/</span></p>
+                    </div>
+
+                    <div>
+                        <p className="text-xs text-gray-600 tracking-widest mb-3">// TECH I WORK WITH</p>
+                        <div className="flex flex-wrap gap-2">
+                            {['React.js', 'Solid.js', 'Node.js', 'Nest.js', 'MongoDB', 'PostgreSQL', 'Express.js', 'JavaScript', 'TypeScript'].map((tech) => (
+                                <span key={tech} className="px-3 py-1 border border-white/10 text-gray-500 hover:border-blue-400/50 hover:text-blue-300 text-xs rounded-sm transition-all duration-200 cursor-default">
+                                    {tech}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+
+                {/* Right — photo card */}
+                <div className={`mt-16 lg:mt-0 lg:w-1/2 flex justify-center transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
+                    <div className="w-full max-w-sm border border-white/10 rounded-lg overflow-hidden bg-black/60 backdrop-blur-sm">
+                        <div className="flex items-center gap-2 px-4 py-3 bg-white/5 border-b border-white/10">
+                            <div className="w-3 h-3 rounded-full bg-red-500/70" />
+                            <div className="w-3 h-3 rounded-full bg-yellow-500/70" />
+                            <div className="w-3 h-3 rounded-full bg-green-500/70" />
+                            <span className="ml-3 text-xs text-gray-500">~/swalih/photo.jpg</span>
+                        </div>
+                        <div className="relative">
+                            <img src={aboutImg} alt="Muhammed Swalih MC" className="w-full h-80 object-cover" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                            <div className="absolute bottom-4 left-4">
+                                <p className="text-green-400 text-xs">$ whoami</p>
+                                <p className="text-white text-sm font-bold">Muhammed Swalih MC</p>
+                                <p className="text-gray-400 text-xs">MERN Stack Developer</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <hr className="text-white font-bold mb-6 max-w-7xl mx-auto" />
+            <div className="w-full max-w-7xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" /></div>
 
-            {/* Main Content */}
-            <div id='about' className="relative z-10 flex flex-col lg:flex-row items-center justify-between w-full max-w-7xl mx-auto px-6 min-h-screen pt-32 pb-20">
-                {/* Text Section */}
-                <div className={`flex flex-col items-start space-y-8 lg:w-1/2 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
-                    {/* Badge */}
-                    <div className="flex items-center gap-2 px-4 py-2 bg-purple-500/10 border border-purple-500/20 rounded-full backdrop-blur-sm">
-                        <Sparkles className="w-4 h-4 text-purple-400" />
-                        <span className="text-purple-300 text-sm font-medium">About Me</span>
+            {/* ── SKILLS ── */}
+            <div id='skills' className="relative z-10 w-full max-w-7xl mx-auto px-6 min-h-screen py-32">
+                <div className="mb-20">
+                    <div className="flex items-center gap-3 mb-4">
+                        <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                        <span className="text-green-400 text-xs tracking-widest uppercase">skills.exe</span>
                     </div>
-
-                    {/* Main Heading */}
-                    <div className="space-y-4">
-                        <ScrambledText className="text-5xl lg:text-7xl font-bold bg-gradient-to-r from-white via-purple-200 to-purple-400 bg-clip-text text-transparent leading-tight">
-                            About Me
-                        </ScrambledText>
-                    </div>
-
-                    {/* Description */}
-                    <div className="space-y-4 text-gray-400 text-lg leading-relaxed max-w-xl">
-                        <p>
-                            I am <span className="text-white font-medium">very passionate about creating websites and digital experiences</span> that combine beautiful design with robust functionality.
-                        </p>
-
-                        <p>
-                            As a dedicated <span className="text-purple-300 font-medium">MERN Stack Developer</span>, I specialize in building full-stack applications using MongoDB, Express.js, React, and Node.js. I love transforming ideas into interactive, scalable web solutions.
-                        </p>
-
-                        <p>
-                            What drives me is the endless possibility to innovate and create meaningful digital products that make a difference in people's lives.
-                        </p>
-                    </div>
-
-                    {/* Tech Passion Points */}
-                    <div className="flex flex-wrap gap-3 mt-4">
-                        {['React.js', 'Node.js', 'MongoDB', 'Express.js', 'JavaScript', 'TypeScript'].map((tech) => (
-                            <span
-                                key={tech}
-                                className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-gray-300 text-sm backdrop-blur-sm hover:bg-purple-500/20 hover:border-purple-500/30 transition-all duration-300"
-                            >
-                                {tech}
-                            </span>
-                        ))}
-                    </div>
+                    <h2 className="font-black text-6xl lg:text-8xl text-white leading-none">
+                        <span className="text-white/15">03.</span> SKILLS
+                    </h2>
+                    <div className="mt-4 h-px bg-gradient-to-r from-green-400/60 via-white/10 to-transparent w-full" />
                 </div>
-
-                {/* Image Section */}
-                <div className={`mt-16 lg:mt-0 lg:w-1/2 flex justify-center transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
-                    <div className="relative">
-                        {/* Glowing orb behind image */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/30 to-blue-500/30 rounded-full blur-3xl scale-110 animate-pulse" />
-
-                        {/* Decorative rings */}
-                        <div className="absolute inset-0 border border-purple-500/20 rounded-full scale-110 animate-ping" style={{ animationDuration: '3s' }} />
-                        <div className="absolute inset-0 border border-blue-500/20 rounded-full scale-125 animate-ping" style={{ animationDuration: '4s' }} />
-
-                        {/* Image container */}
-                        <div className="relative w-80 h-80 lg:w-96 lg:h-96 bg-gradient-to-br from-purple-500/10 to-blue-500/10 backdrop-blur-sm border border-white/10 rounded-2xl flex items-center justify-center overflow-hidden shadow-2xl">
-                            <img
-                                src={aboutImg}
-                                alt="Muhammed Swalih MC - MERN Stack Developer"
-                                className="w-full h-full object-cover rounded-2xl transform hover:scale-105 transition-transform duration-500"
-                            />
-
-                            {/* Overlay gradient */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl" />
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-            <hr className="text-white font-bold mb-6 max-w-7xl mx-auto" />
-            <div id='skills' className="relative z-10 flex flex-col lg:flex-row items-center justify-between w-full max-w-7xl mx-auto px-6 min-h-screen pt-32 pb-20">
-                {/* Text Section */}
-                <div className={`flex flex-col items-start space-y-8 lg:w-1/2 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
-                    {/* Badge */}
-                    <div className="flex items-center gap-2 px-4 py-2 bg-purple-500/10 border border-purple-500/20 rounded-full backdrop-blur-sm">
-                        <Sparkles className="w-4 h-4 text-purple-400" />
-                        <span className="text-purple-300 text-sm font-medium">Technical Skills</span>
-                    </div>
-
-                    {/* Main Heading */}
-                    <div className="space-y-4">
-                        <ScrambledText className="text-5xl lg:text-7xl font-bold bg-gradient-to-r from-white via-purple-200 to-purple-400 bg-clip-text text-transparent leading-tight">
-                            Skills
-                        </ScrambledText>
-                    </div>
-
-                    {/* Skills Description */}
-                    <p className="text-gray-400 text-lg leading-relaxed max-w-xl">
-                        I specialize in the complete MERN stack and beyond, with expertise in modern databases,
-                        cloud platforms, and deployment technologies to deliver full-stack solutions.
-                    </p>
-
-                    {/* Skills Categories */}
-                    <div className="space-y-6 w-full max-w-xl">
-                        {/* MERN Stack */}
-                        <div className="space-y-3">
-                            <h3 className="text-white text-xl font-semibold">MERN Stack</h3>
-                            <div className="flex flex-wrap gap-3">
+        
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                    <div className="space-y-10">
+                        <div>
+                            <p className="text-xs text-green-400 tracking-widest mb-4">// MERN STACK</p>
+                            <div className="space-y-4">
                                 {[
                                     { name: 'MongoDB', level: 90 },
                                     { name: 'Express.js', level: 85 },
                                     { name: 'React.js', level: 88 },
-                                    { name: 'Node.js', level: 87 }
+                                    { name: 'Node.js', level: 87 },
+                                    { name: 'Nest.js', level: 82 },
+                                    { name: 'Solid.js', level: 50 },
                                 ].map((skill) => (
-                                    <div key={skill.name} className="relative group">
-                                        <div className="px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-white font-medium backdrop-blur-sm hover:bg-purple-500/20 hover:border-purple-500/30 transition-all duration-300">
-                                            {skill.name}
+                                    <div key={skill.name} className="group">
+                                        <div className="flex justify-between items-center mb-1">
+                                            <span className="text-sm text-gray-400 group-hover:text-white transition-colors">{skill.name}</span>
+                                            <span className="text-xs text-green-400">{skill.level}%</span>
                                         </div>
-                                        <div className="absolute bottom-0 left-0 w-full h-1 bg-gray-600 rounded-full">
-                                            <div
-                                                className="h-full bg-gradient-to-r from-purple-500 to-blue-500 rounded-full transition-all duration-1000"
-                                                style={{ width: `${skill.level}%` }}
-                                            ></div>
+                                        <div className="h-px bg-white/10 w-full relative overflow-hidden">
+                                            <div className="absolute top-0 left-0 h-full bg-gradient-to-r from-green-400 to-emerald-300" style={{ width: `${skill.level}%` }} />
                                         </div>
                                     </div>
                                 ))}
                             </div>
                         </div>
-
-                        {/* Databases */}
-                        <div className="space-y-3">
-                            <h3 className="text-white text-xl font-semibold">Databases</h3>
-                            <div className="flex flex-wrap gap-3">
-                                {['Redis', 'PostgreSQL', 'MongoDB'].map((db) => (
-                                    <div key={db} className="px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-gray-300 font-medium backdrop-blur-sm hover:bg-blue-500/20 hover:border-blue-500/30 hover:text-white transition-all duration-300">
-                                        {db}
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-
-                        {/* Cloud & Deployment */}
-                        <div className="space-y-3">
-                            <h3 className="text-white text-xl font-semibold">Cloud & Deployment</h3>
-                            <div className="flex flex-wrap gap-3">
-                                {['AWS', 'Vercel', 'Render'].map((cloud) => (
-                                    <div key={cloud} className="px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-gray-300 font-medium backdrop-blur-sm hover:bg-green-500/20 hover:border-green-500/30 hover:text-white transition-all duration-300">
-                                        {cloud}
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-
-                        {/* Frontend Technologies */}
-                        <div className="space-y-3">
-                            <h3 className="text-white text-xl font-semibold">Frontend</h3>
-                            <div className="flex flex-wrap gap-3">
-                                {['JavaScript', 'TypeScript', 'HTML5', 'CSS3', 'Tailwind CSS', 'React.js'].map((tech) => (
-                                    <div key={tech} className="px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-gray-300 font-medium backdrop-blur-sm hover:bg-yellow-500/20 hover:border-yellow-500/30 hover:text-white transition-all duration-300">
+        
+                        <div>
+                            <p className="text-xs text-blue-400 tracking-widest mb-4">// FRONTEND</p>
+                            <div className="flex flex-wrap gap-2">
+                                {['JavaScript', 'TypeScript', 'HTML5', 'CSS3', 'Tailwind CSS'].map((tech) => (
+                                    <span key={tech} className="text-xs px-3 py-1.5 border border-white/10 text-gray-400 hover:border-blue-400/50 hover:text-blue-300 transition-all duration-200 rounded-sm cursor-default">
                                         {tech}
-                                    </div>
+                                    </span>
                                 ))}
                             </div>
                         </div>
                     </div>
+        
+                    <div>
+                        <div className="border border-white/10 rounded-lg overflow-hidden bg-black/60 backdrop-blur-sm">
+                            <div className="flex items-center gap-2 px-4 py-3 bg-white/5 border-b border-white/10">
+                                <div className="w-3 h-3 rounded-full bg-red-500/70" />
+                                <div className="w-3 h-3 rounded-full bg-yellow-500/70" />
+                                <div className="w-3 h-3 rounded-full bg-green-500/70" />
+                                <span className="ml-3 text-xs text-gray-500">~/swalih/stack.json</span>
+                            </div>
+                            <div className="p-6 text-sm space-y-1 text-gray-400 leading-relaxed">
+                                <p><span className="text-white/20">{'{'}</span></p>
+                                <p className="pl-4"><span className="text-blue-400">"databases"</span><span className="text-white/20">:</span> <span className="text-white/20">['</span><span className="text-green-300">Redis</span><span className="text-white/20">', '</span><span className="text-green-300">PostgreSQL</span><span className="text-white/20">', '</span><span className="text-green-300">MongoDB</span><span className="text-white/20">'],</span></p>
+                                <p className="pl-4"><span className="text-blue-400">"cloud"</span><span className="text-white/20">:</span> <span className="text-white/20">['</span><span className="text-yellow-300">AWS</span><span className="text-white/20">', '</span><span className="text-yellow-300">Vercel</span><span className="text-white/20">', '</span><span className="text-yellow-300">Render</span><span className="text-white/20">'],</span></p>
+                                <p className="pl-4"><span className="text-blue-400">"tools"</span><span className="text-white/20">:</span> <span className="text-white/20">['</span><span className="text-pink-300">Git</span><span className="text-white/20">', '</span><span className="text-pink-300">Docker</span><span className="text-white/20">', '</span><span className="text-pink-300">WebRTC</span><span className="text-white/20">', '</span><span className="text-pink-300">Socket.io</span><span className="text-white/20">'],</span></p>
+                                <p className="pl-4"><span className="text-blue-400">"proficiency"</span><span className="text-white/20">:{` {`}</span></p>
+                                <p className="pl-8"><span className="text-gray-500">"fullStack"</span><span className="text-white/20">:</span> <span className="text-green-400">92</span><span className="text-white/20">,</span></p>
+                                <p className="pl-8"><span className="text-gray-500">"cloudDevOps"</span><span className="text-white/20">:</span> <span className="text-green-400">85</span><span className="text-white/20">,</span></p>
+                                <p className="pl-8"><span className="text-gray-500">"databases"</span><span className="text-white/20">:</span> <span className="text-green-400">88</span></p>
+                                <p className="pl-4"><span className="text-white/20">{`}`}</span></p>
+                                <p><span className="text-white/20">{'}'}</span></p>
+                                <p className="pt-2 text-green-400">▋<span className="animate-pulse">_</span></p>
+                            </div>
+                        </div>
+        
+                        <div className="grid grid-cols-3 gap-3 mt-6">
+                            {[
+                                { label: 'Projects', value: '9+' },
+                                { label: 'Stack', value: 'MERN' },
+                                { label: 'Available', value: 'Now' },
+                            ].map((stat) => (
+                                <div key={stat.label} className="border border-white/10 rounded-lg p-4 text-center hover:border-green-400/30 transition-all duration-300">
+                                    <p className="text-2xl font-black text-white">{stat.value}</p>
+                                    <p className="text-xs text-gray-600 mt-1 tracking-widest uppercase">{stat.label}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="w-full max-w-7xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" /></div>
+
+            {/* ── PROJECTS ── */}
+            <div id="projects" className="relative z-10 w-full max-w-7xl mx-auto px-6 py-32">
+                <div className="mb-20">
+                    <div className="flex items-center gap-3 mb-4">
+                        <div className="w-2 h-2 rounded-full bg-pink-400 animate-pulse" />
+                        <span className="text-pink-400 text-xs tracking-widest uppercase">projects.ls</span>
+                    </div>
+                    <h2 className="font-black text-6xl lg:text-8xl text-white leading-none">
+                        <span className="text-white/15">04.</span> WORK
+                    </h2>
+                    <div className="mt-4 h-px bg-gradient-to-r from-pink-400/60 via-white/10 to-transparent w-full" />
+                    <p className="mt-4 text-gray-600 text-sm max-w-xl border-l border-white/10 pl-4">
+                        A collection of projects showcasing my expertise in full-stack development
+                    </p>
                 </div>
 
-                {/* Visual Skills Section */}
-                <div className={`mt-16 lg:mt-0 lg:w-1/2 flex justify-center transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
-                    <div className="relative w-full max-w-lg">
-                        {/* Animated Background Elements */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-blue-500/10 rounded-3xl blur-3xl animate-pulse" />
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {projects.map((project, index) => (
+                        <div
+                            key={index}
+                            className="group border border-white/10 rounded-lg overflow-hidden hover:border-green-400/30 transition-all duration-300 bg-black/40 backdrop-blur-sm"
+                        >
+                            {/* Card titlebar */}
+                            <div className="flex items-center gap-2 px-4 py-2.5 bg-white/5 border-b border-white/10">
+                                <div className="w-2 h-2 rounded-full bg-red-500/60" />
+                                <div className="w-2 h-2 rounded-full bg-yellow-500/60" />
+                                <div className="w-2 h-2 rounded-full bg-green-500/60" />
+                                <span className="ml-2 text-xs text-gray-600 truncate">{project.title.toLowerCase().replace(/ /g, '_')}.tsx</span>
+                            </div>
 
-                        {/* Skills Visualization */}
-                        <div className="relative bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 space-y-6">
-                            {/* MERN Stack Visualization */}
-                            <div className="text-center">
-                                <h3 className="text-white text-2xl font-bold mb-6">Tech Stack Mastery</h3>
+                            {/* Image */}
+                            <div className="relative h-40 overflow-hidden">
+                                <img src={project.image} alt={project.title} className="w-full h-full object-cover opacity-70 group-hover:opacity-90 group-hover:scale-105 transition-all duration-500" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                            </div>
 
-                                {/* Circular Progress */}
-                                <div className="grid grid-cols-2 gap-6">
-                                    {[
-                                        { name: 'MongoDB', value: 90, color: 'from-green-400 to-green-600' },
-                                        { name: 'Express', value: 85, color: 'from-gray-400 to-gray-600' },
-                                        { name: 'React', value: 88, color: 'from-blue-400 to-blue-600' },
-                                        { name: 'Node.js', value: 87, color: 'from-green-500 to-green-700' }
-                                    ].map((skill) => (
-                                        <div key={skill.name} className="flex flex-col items-center">
-                                            <div className="relative w-20 h-20">
-                                                <div className="absolute inset-0 bg-gray-700 rounded-full"></div>
-                                                <div
-                                                    className="absolute inset-0 rounded-full bg-gradient-to-r bg-green-500"
-                                                    style={{
-                                                        background: `conic-gradient(${skill.color.replace('from-', '').replace('to-', '')} ${skill.value * 3.6}deg, transparent 0)`
-                                                    }}
-                                                ></div>
-                                                <div className="absolute inset-2 bg-gray-900 rounded-full flex items-center justify-center">
-                                                    <span className="text-white text-sm font-bold">{skill.value}%</span>
-                                                </div>
-                                            </div>
-                                            <span className="text-white text-sm mt-2">{skill.name}</span>
-                                        </div>
+                            {/* Content */}
+                            <div className="p-5 space-y-3">
+                                <div>
+                                    <p className="text-xs text-gray-600 mb-1">// {String(index + 1).padStart(2, '0')}</p>
+                                    <h3 className="text-white font-bold text-sm group-hover:text-green-400 transition-colors">{project.title}</h3>
+                                </div>
+
+                                <p className="text-gray-600 text-xs leading-relaxed line-clamp-2">{project.description}</p>
+
+                                <div className="flex flex-wrap gap-1.5">
+                                    {project.tech.map((tech, i) => (
+                                        <span key={i} className="px-2 py-0.5 text-xs border border-white/10 text-gray-500 rounded-sm">{tech}</span>
                                     ))}
                                 </div>
-                            </div>
 
-                            {/* Additional Skills Grid */}
-                            <div className="grid grid-cols-3 gap-4 pt-6 border-t border-white/10">
-                                {['Redis', 'PostgreSQL', 'AWS', 'Vercel', 'Render', 'Docker'].map((skill) => (
-                                    <div key={skill} className="text-center p-3 bg-white/5 rounded-xl hover:bg-white/10 transition-all duration-300">
-                                        <div className="text-white font-medium text-sm">{skill}</div>
-                                    </div>
-                                ))}
-                            </div>
-
-                            {/* Experience Summary */}
-                            <div className="pt-6 border-t border-white/10">
-                                <div className="text-center text-gray-300 text-sm">
-                                    <p>Full-Stack Development • Cloud Deployment • Database Management</p>
+                                <div className="flex gap-2 pt-1">
+                                    {project.demo && project.demo !== '#' && (
+                                        <a href={project.demo} target="_blank" rel="noopener noreferrer"
+                                            className="flex items-center gap-1.5 px-3 py-1.5 bg-green-400 hover:bg-green-300 text-black text-xs font-bold rounded transition-all duration-200">
+                                            <ExternalLink className="w-3 h-3" /> demo()
+                                        </a>
+                                    )}
+                                    {project.code && (
+                                        <a href={project.code} target="_blank" rel="noopener noreferrer"
+                                            className="flex items-center gap-1.5 px-3 py-1.5 border border-white/10 hover:border-green-400/40 text-gray-500 hover:text-green-400 text-xs rounded transition-all duration-200">
+                                            <Github className="w-3 h-3" /> code()
+                                        </a>
+                                    )}
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    ))}
                 </div>
             </div>
-            <hr className="text-white font-bold mb-6 max-w-7xl mx-auto" />
 
-            {/* Projects Section */}
-            <div id="projects" className="relative z-10 w-full max-w-7xl mx-auto px-6 py-32">
-                <div className={`flex flex-col items-center space-y-12 transition-all duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-                    <div className="text-center space-y-4">
-                        <div className="flex items-center justify-center gap-2 px-4 py-2 bg-purple-500/10 border border-purple-500/20 rounded-full backdrop-blur-sm mx-auto w-fit">
-                            <Sparkles className="w-4 h-4 text-purple-400" />
-                            <span className="text-purple-300 text-sm font-medium">My Work</span>
-                        </div>
-
-                        <ScrambledText className="text-5xl lg:text-7xl font-bold bg-gradient-to-r from-white via-purple-200 to-purple-400 bg-clip-text text-transparent">
-                            Projects
-                        </ScrambledText>
-
-                        <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-                            A collection of projects showcasing my expertise in full-stack development
-                        </p>
+            {/* ── FOOTER ── */}
+            <footer className="relative z-10 w-full max-w-7xl mx-auto px-6 py-10 border-t border-white/10">
+                <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div className="text-xs text-gray-700">
+                        <span className="text-green-400">$</span> © 2024 Muhammed Swalih MC — All rights reserved.
                     </div>
-
-                    {/* Projects Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
-                        {projects.map((project, index) => (
-                            <div
-                                key={index}
-                                className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:border-purple-500/50 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20"
-                            >
-                                {/* Glowing effect on hover */}
-                                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/0 to-blue-500/0 group-hover:from-purple-500/10 group-hover:to-blue-500/10 transition-all duration-300" />
-
-                                {/* Project Image */}
-                                <div className="relative h-48 bg-gradient-to-br from-purple-900/20 to-blue-900/20 flex items-center justify-center overflow-hidden">
-                                    <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:20px_20px]" />
-                                    <img src={project.image} alt="" />
-                                </div>
-
-                                {/* Project Content */}
-                                <div className="relative p-6 space-y-4">
-                                    <h3 className="text-xl font-semibold text-white group-hover:text-purple-300 transition-colors">
-                                        {project.title}
-                                    </h3>
-
-                                    <p className="text-gray-400 text-sm leading-relaxed">
-                                        {project.description}
-                                    </p>
-
-                                    {/* Technologies */}
-                                    <div className="flex flex-wrap gap-2">
-                                        {project.tech.map((tech, techIndex) => (
-                                            <span
-                                                key={techIndex}
-                                                className="px-2 py-1 text-xs bg-purple-500/10 border border-purple-500/20 rounded-lg text-purple-300 backdrop-blur-sm"
-                                            >
-                                                {tech}
-                                            </span>
-                                        ))}
-                                    </div>
-
-                                    {/* Action Buttons */}
-                                    <div className="flex gap-3 pt-2">
-                                        <a
-                                            href={project.demo}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg text-sm font-medium transition-all duration-300 hover:scale-105"
-                                        >
-                                            <ExternalLink className="w-4 h-4" />
-                                            Demo
-                                        </a>
-                                        <a
-                                            href={project.code}
-                                            className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-lg text-sm font-medium transition-all duration-300 hover:scale-105"
-                                        >
-                                            <Github className="w-4 h-4" />
-                                            Code
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                    <div className="flex items-center gap-3">
+                        {[
+                            { href: 'https://github.com/mhdswalih?tab=repositories', icon: <Github className="w-4 h-4" />, label: 'github' },
+                            { href: 'https://www.linkedin.com/in/muhammed-swalih-mc-a39485329/', icon: <Linkedin className="w-4 h-4" />, label: 'linkedin' },
+                            { href: 'mailto:ctmswalihmc@gmail.com', icon: <Mail className="w-4 h-4" />, label: 'email' },
+                        ].map((s) => (
+                            <a key={s.label} href={s.href} className="flex items-center gap-1.5 px-3 py-1.5 border border-white/10 hover:border-green-400/40 text-gray-600 hover:text-green-400 text-xs rounded transition-all duration-200">
+                                {s.icon} {s.label}
+                            </a>
                         ))}
-                    </div>
-                </div>
-            </div>
-
-            {/* Footer */}
-            <footer className="relative z-10 w-full max-w-7xl mx-auto px-6 py-12 border-t border-white/10">
-                <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-                    <div className="text-gray-400 text-sm">
-                        © 2024 Muhammed Swalih MC. All rights reserved.
-                    </div>
-
-                    <div className="flex items-center gap-4">
-                        <a href="https://github.com/mhdswalih?tab=repositories" className="text-gray-400 hover:text-purple-400 transition-colors">
-                            <Github className="w-5 h-5" />
-                        </a>
-                        <a href="https://www.linkedin.com/in/muhammed-swalih-mc-a39485329/" className="text-gray-400 hover:text-purple-400 transition-colors">
-                            <Linkedin className="w-5 h-5" />
-                        </a>
-                        <a href="mailto:ctmswalihmc@gmail.com" className="text-gray-400 hover:text-purple-400 transition-colors">
-                            <Mail className="w-5 h-5" />
-                        </a>
                     </div>
                 </div>
             </footer>
