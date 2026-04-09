@@ -10,7 +10,7 @@ import Gme from '../../assets/img/Projects/gamemem.png'
 import ImgGen from '../../assets/img/Projects/imagegen.png'
 import userMan from '../../assets/img/Projects/usermang.png'
 import FameZero from '../../assets/img/Projects/Screenshot 2025-10-07 192432.png'
-import resume from '../../assets/Resume/MuhammedSwalihMC-3.pdf'
+import resume from '../../assets/Resume/MuhamedSwalihMc New.pdf'
 
 const Landing = () => {
     const [isVisible, setIsVisible] = useState(false);
