@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://muhammedswalihmc.vercel.app/sitemap.xml
