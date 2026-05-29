@@ -22,15 +22,15 @@ const Landing = () => {
     const projects = [
         {
             title: 'Flame Zero',
-            description: 'A full-featured online store with product catalog, user authentication, shopping cart, secure payments, and admin dashboard.',
-            tech: ['React.js', 'Node.js', 'Express', 'MongoDB', 'Redis', 'socket.io', 'Fire-Base'],
+            description: 'A production-style e-commerce platform with authentication, cart flow, real-time updates, caching, payments, and admin controls.',
+            tech: ['React.js', 'Node.js', 'Express', 'MongoDB', 'Redis', 'Socket.io', 'Firebase'],
             demo: '#',
             code: 'https://github.com/mhdswalih/FameZero',
             image: FameZero
         },
         {
             title: 'E-Commerce Platform',
-            description: 'A full-featured online store with product catalog, user authentication, shopping cart, secure payments, and admin dashboard.',
+            description: 'A complete online store with product management, user accounts, cart, checkout flow, and an admin dashboard for operations.',
             tech: ['EJS', 'Node.js', 'Express', 'MongoDB'],
             demo: 'https://aranoz.online/',
             code: 'https://github.com/mhdswalih/Aranoz_eCommerce',
@@ -38,7 +38,7 @@ const Landing = () => {
         },
         {
             title: 'Real-time Chat Application',
-            description: 'A feature-rich platform for text, video, and audio calls using WebRTC, with group chat and real-time notifications.',
+            description: 'A real-time communication app with private chat, group messaging, WebRTC audio/video calls, and live notifications.',
             tech: ['React', 'Socket.io', 'Node.js', 'Express', 'WebRTC'],
             demo: 'https://thengapod.vercel.app/',
             code: 'https://github.com/mhdswalih/ThengaPod-frontend',
@@ -46,7 +46,7 @@ const Landing = () => {
         },
         {
             title: 'AI Image Generator',
-            description: 'An interactive web app generating unique images from text prompts with AI, featuring download and sharing options.',
+            description: 'A prompt-based AI image tool with a clean generation flow, responsive UI, and download-ready generated artwork.',
             tech: ['HTML', 'CSS', 'JavaScript'],
             demo: 'https://ai-image-gen-eta.vercel.app/',
             code: 'https://github.com/mhdswalih/Ai-imageGenarator',
@@ -54,14 +54,14 @@ const Landing = () => {
         },
         {
             title: 'Apartment Management System',
-            description: 'A property management solution with tenant management, rent tracking, maintenance requests, and financial reporting.',
+            description: 'A property management dashboard for tenants, rent tracking, maintenance requests, and building-level administration.',
             tech: ['EJS', 'Node.js', 'Express', 'MongoDB'],
             demo: '#',
             image: Flat
         },
         {
             title: 'OLX Clone',
-            description: 'A classified ads platform with user authentication, product listings, search, and buyer-seller messaging.',
+            description: 'A classifieds marketplace with authentication, product listings, image uploads, search, and buyer-seller workflows.',
             tech: ['React', 'MongoDB', 'TypeScript', 'Firebase', 'Cloudinary'],
             code: 'https://github.com/mhdswalih/olx-clone',
             demo: '#',
@@ -69,7 +69,7 @@ const Landing = () => {
         },
         {
             title: 'Netflix Clone',
-            description: 'A streaming service replica with movie browsing, user profiles, recommendations, and responsive design.',
+            description: 'A responsive streaming UI clone with movie browsing, Firebase integration, reusable components, and polished layouts.',
             tech: ['React', 'Firebase'],
             code: 'https://github.com/mhdswalih/Netflix-Clone-React',
             demo: '#',
@@ -77,7 +77,7 @@ const Landing = () => {
         },
         {
             title: 'Memory Game',
-            description: 'An interactive card-flipping memory game built with React. Players match pairs of cards while tracking score and moves.',
+            description: 'An interactive React game with card matching logic, move tracking, score feedback, and responsive visual states.',
             tech: ['React', 'CSS'],
             demo: 'https://memmory-game-using-react.vercel.app/',
             code: 'https://github.com/mhdswalih/MemmoryGame-Using-React',
@@ -85,7 +85,7 @@ const Landing = () => {
         },
         {
             title: 'User Management System',
-            description: 'A full-stack user management system with secure CRUD operations, Cloudinary image uploads, and responsive dashboard.',
+            description: 'A secure CRUD dashboard with JWT authentication, user profiles, Cloudinary image upload, and admin-friendly management flows.',
             tech: ['React', 'Node.js', 'Express', 'MongoDB', 'Cloudinary'],
             demo: '#',
             code: 'https://github.com/mhdswalih/Jwt-frontend',
@@ -111,7 +111,7 @@ const Landing = () => {
                             href={`#${item}`}
                             className="px-4 py-2 text-gray-500 hover:text-green-400 hover:bg-white/5 transition-all duration-200 text-xs tracking-widest uppercase rounded"
                         >
-                            <span className="text-green-400/40"></span> {item}
+                            {item}
                         </a>
                     ))}
                 </div>
@@ -131,20 +131,21 @@ const Landing = () => {
                     <div className="space-y-3">
                         <p className="text-gray-600 text-sm tracking-widest">// greeting</p>
                         <h1 className="text-6xl lg:text-8xl font-black text-white leading-none">
-                            <span className="text-white/15">00.</span> HEY
+                            <span className="text-white/15">00.</span> SWALIH
                         </h1>
                         <div className="h-px bg-gradient-to-r from-green-400/60 via-white/10 to-transparent w-full" />
                         <h2 className="text-xl text-gray-400 font-light pt-2">
                             I'm <span className="text-white font-bold">Muhammed Swalih MC</span>
                         </h2>
                         <p className="text-green-400 text-lg">
-                            <span className="text-gray-600">{'>'}_</span> MERN Stack Developer
+                            <span className="text-gray-600">{'>'}_</span> Full-Stack Developer | MERN, Next.js & AI Automation
                         </p>
                     </div>
 
                     <p className="text-gray-500 text-sm leading-relaxed max-w-md border-l border-white/10 pl-4">
-                        Crafting seamless web experiences with modern technologies.
-                        Passionate about building scalable applications that make a difference.
+                        Full-stack developer based in Kerala, India. I build fast, practical web applications
+                        with clean interfaces, reliable APIs, admin dashboards, automation workflows,
+                        and AI-powered features.
                     </p>
 
                     <div className="flex flex-wrap gap-3 pt-2">
@@ -183,10 +184,10 @@ const Landing = () => {
                         <div className="p-6 text-sm space-y-1 text-gray-400 leading-loose">
                             <p><span className="text-white/20">{'{'}</span></p>
                             <p className="pl-4"><span className="text-blue-400">"name"</span><span className="text-white/20">:</span> <span className="text-green-300">"Muhammed Swalih MC"</span><span className="text-white/20">,</span></p>
-                            <p className="pl-4"><span className="text-blue-400">"role"</span><span className="text-white/20">:</span> <span className="text-green-300">"MERN Stack Developer"</span><span className="text-white/20">,</span></p>
+                            <p className="pl-4"><span className="text-blue-400">"role"</span><span className="text-white/20">:</span> <span className="text-green-300">"Full-Stack Developer"</span><span className="text-white/20">,</span></p>
                             <p className="pl-4"><span className="text-blue-400">"location"</span><span className="text-white/20">:</span> <span className="text-yellow-300">"Kerala, India"</span><span className="text-white/20">,</span></p>
                             <p className="pl-4"><span className="text-blue-400">"status"</span><span className="text-white/20">:</span> <span className="text-green-400">"open_to_work"</span><span className="text-white/20">,</span></p>
-                            <p className="pl-4"><span className="text-blue-400">"focus"</span><span className="text-white/20">:</span> <span className="text-pink-300">"full-stack"</span></p>
+                            <p className="pl-4"><span className="text-blue-400">"focus"</span><span className="text-white/20">:</span> <span className="text-pink-300">"web_apps_ai_automation"</span></p>
                             <p><span className="text-white/20">{'}'}</span></p>
                             <p className="pt-2 text-green-400">▋<span className="animate-pulse">_</span></p>
                         </div>
@@ -212,16 +213,16 @@ const Landing = () => {
 
                     <div className="space-y-4 text-gray-500 text-sm leading-relaxed max-w-xl border-l border-white/10 pl-4">
                         <p><span className="text-blue-400">/*</span></p>
-                        <p>I am <span className="text-white">very passionate about creating websites</span> and digital experiences that combine beautiful design with robust functionality.</p>
-                        <p>As a dedicated <span className="text-green-400">MERN Stack Developer</span>, I specialize in building full-stack applications using MongoDB, Express.js, React, and Node.js.</p>
-                        <p>What drives me is the endless possibility to innovate and create meaningful digital products that make a difference in people's lives.</p>
+                        <p>I am a <span className="text-white">full-stack developer from Kerala, India</span> focused on building useful web products with clean UI, secure backend logic, and scalable database design.</p>
+                        <p>My core stack is <span className="text-green-400">MongoDB, Express.js, React, Node.js, and Next.js</span>. I also work with dashboards, authentication, APIs, file uploads, real-time features, and deployment workflows.</p>
+                        <p>I am currently expanding into <span className="text-pink-300">AI automation, agents, CMS workflows, and model-powered tools</span> using platforms like n8n, Strapi.js, Claude.ai, Codex, and GLM.</p>
                         <p><span className="text-blue-400">*/</span></p>
                     </div>
 
                     <div>
                         <p className="text-xs text-gray-600 tracking-widest mb-3">// TECH I WORK WITH</p>
                         <div className="flex flex-wrap gap-2">
-                            {['React.js', 'Solid.js', 'Node.js', 'Nest.js', 'MongoDB', 'PostgreSQL', 'Express.js', 'JavaScript', 'TypeScript'].map((tech) => (
+                            {['React.js', 'Next.js', 'Solid.js', 'Node.js', 'Nest.js', 'MongoDB', 'PostgreSQL', 'Express.js', 'JavaScript', 'TypeScript'].map((tech) => (
                                 <span key={tech} className="px-3 py-1 border border-white/10 text-gray-500 hover:border-blue-400/50 hover:text-blue-300 text-xs rounded-sm transition-all duration-200 cursor-default">
                                     {tech}
                                 </span>
@@ -270,15 +271,15 @@ const Landing = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
                     <div className="space-y-10">
                         <div>
-                            <p className="text-xs text-green-400 tracking-widest mb-4">// MERN STACK</p>
+                            <p className="text-xs text-green-400 tracking-widest mb-4">// CORE STACK</p>
                             <div className="space-y-4">
                                 {[
                                     { name: 'MongoDB', level: 90 },
                                     { name: 'Express.js', level: 85 },
                                     { name: 'React.js', level: 88 },
                                     { name: 'Node.js', level: 87 },
-                                    { name: 'Nest.js', level: 82 },
-                                    { name: 'Solid.js', level: 50 },
+                                    { name: 'Next.js', level: 78 },
+                                    { name: 'Nest.js', level: 75 },
                                 ].map((skill) => (
                                     <div key={skill.name} className="group">
                                         <div className="flex justify-between items-center mb-1">
@@ -296,8 +297,30 @@ const Landing = () => {
                         <div>
                             <p className="text-xs text-blue-400 tracking-widest mb-4">// FRONTEND</p>
                             <div className="flex flex-wrap gap-2">
-                                {['JavaScript', 'TypeScript', 'HTML5', 'CSS3', 'Tailwind CSS'].map((tech) => (
+                                {['React.js', 'Next.js', 'JavaScript', 'TypeScript', 'HTML5', 'CSS3', 'Tailwind CSS', 'Responsive UI'].map((tech) => (
                                     <span key={tech} className="text-xs px-3 py-1.5 border border-white/10 text-gray-400 hover:border-blue-400/50 hover:text-blue-300 transition-all duration-200 rounded-sm cursor-default">
+                                        {tech}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div>
+                            <p className="text-xs text-yellow-400 tracking-widest mb-4">// BACKEND & DATABASE</p>
+                            <div className="flex flex-wrap gap-2">
+                                {['Node.js', 'Express.js', 'Nest.js', 'MongoDB', 'PostgreSQL', 'Redis', 'REST APIs', 'JWT Auth'].map((tech) => (
+                                    <span key={tech} className="text-xs px-3 py-1.5 border border-white/10 text-gray-400 hover:border-yellow-400/50 hover:text-yellow-300 transition-all duration-200 rounded-sm cursor-default">
+                                        {tech}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div>
+                            <p className="text-xs text-pink-400 tracking-widest mb-4">// AI, CMS & AUTOMATION</p>
+                            <div className="flex flex-wrap gap-2">
+                                {['n8n', 'Strapi.js', 'AI Agents', 'Claude.ai', 'Codex', 'GLM', 'AI Models', 'Workflow Automation'].map((tech) => (
+                                    <span key={tech} className="text-xs px-3 py-1.5 border border-white/10 text-gray-400 hover:border-pink-400/50 hover:text-pink-300 transition-all duration-200 rounded-sm cursor-default">
                                         {tech}
                                     </span>
                                 ))}
@@ -315,13 +338,15 @@ const Landing = () => {
                             </div>
                             <div className="p-6 text-sm space-y-1 text-gray-400 leading-relaxed">
                                 <p><span className="text-white/20">{'{'}</span></p>
-                                <p className="pl-4"><span className="text-blue-400">"databases"</span><span className="text-white/20">:</span> <span className="text-white/20">['</span><span className="text-green-300">Redis</span><span className="text-white/20">', '</span><span className="text-green-300">PostgreSQL</span><span className="text-white/20">', '</span><span className="text-green-300">MongoDB</span><span className="text-white/20">'],</span></p>
+                                <p className="pl-4"><span className="text-blue-400">"frontend"</span><span className="text-white/20">:</span> <span className="text-white/20">['</span><span className="text-green-300">React.js</span><span className="text-white/20">', '</span><span className="text-green-300">Next.js</span><span className="text-white/20">', '</span><span className="text-green-300">Tailwind CSS</span><span className="text-white/20">'],</span></p>
+                                <p className="pl-4"><span className="text-blue-400">"backend"</span><span className="text-white/20">:</span> <span className="text-white/20">['</span><span className="text-yellow-300">Node.js</span><span className="text-white/20">', '</span><span className="text-yellow-300">Express.js</span><span className="text-white/20">', '</span><span className="text-yellow-300">MongoDB</span><span className="text-white/20">'],</span></p>
                                 <p className="pl-4"><span className="text-blue-400">"cloud"</span><span className="text-white/20">:</span> <span className="text-white/20">['</span><span className="text-yellow-300">AWS</span><span className="text-white/20">', '</span><span className="text-yellow-300">Vercel</span><span className="text-white/20">', '</span><span className="text-yellow-300">Render</span><span className="text-white/20">'],</span></p>
-                                <p className="pl-4"><span className="text-blue-400">"tools"</span><span className="text-white/20">:</span> <span className="text-white/20">['</span><span className="text-pink-300">Git</span><span className="text-white/20">', '</span><span className="text-pink-300">Docker</span><span className="text-white/20">', '</span><span className="text-pink-300">WebRTC</span><span className="text-white/20">', '</span><span className="text-pink-300">Socket.io</span><span className="text-white/20">'],</span></p>
+                                <p className="pl-4"><span className="text-blue-400">"aiAutomation"</span><span className="text-white/20">:</span> <span className="text-white/20">['</span><span className="text-pink-300">n8n</span><span className="text-white/20">', '</span><span className="text-pink-300">Strapi.js</span><span className="text-white/20">', '</span><span className="text-pink-300">AI Agents</span><span className="text-white/20">'],</span></p>
                                 <p className="pl-4"><span className="text-blue-400">"proficiency"</span><span className="text-white/20">:{` {`}</span></p>
                                 <p className="pl-8"><span className="text-gray-500">"fullStack"</span><span className="text-white/20">:</span> <span className="text-green-400">92</span><span className="text-white/20">,</span></p>
-                                <p className="pl-8"><span className="text-gray-500">"cloudDevOps"</span><span className="text-white/20">:</span> <span className="text-green-400">85</span><span className="text-white/20">,</span></p>
-                                <p className="pl-8"><span className="text-gray-500">"databases"</span><span className="text-white/20">:</span> <span className="text-green-400">88</span></p>
+                                <p className="pl-8"><span className="text-gray-500">"frontend"</span><span className="text-white/20">:</span> <span className="text-green-400">90</span><span className="text-white/20">,</span></p>
+                                <p className="pl-8"><span className="text-gray-500">"backend"</span><span className="text-white/20">:</span> <span className="text-green-400">88</span><span className="text-white/20">,</span></p>
+                                <p className="pl-8"><span className="text-gray-500">"automation"</span><span className="text-white/20">:</span> <span className="text-green-400">80</span></p>
                                 <p className="pl-4"><span className="text-white/20">{`}`}</span></p>
                                 <p><span className="text-white/20">{'}'}</span></p>
                                 <p className="pt-2 text-green-400">▋<span className="animate-pulse">_</span></p>
@@ -331,7 +356,7 @@ const Landing = () => {
                         <div className="grid grid-cols-3 gap-3 mt-6">
                             {[
                                 { label: 'Projects', value: '9+' },
-                                { label: 'Stack', value: 'MERN' },
+                                { label: 'Stack', value: 'MERN+' },
                                 { label: 'Available', value: 'Now' },
                             ].map((stat) => (
                                 <div key={stat.label} className="border border-white/10 rounded-lg p-4 text-center hover:border-green-400/30 transition-all duration-300">
@@ -358,7 +383,7 @@ const Landing = () => {
                     </h2>
                     <div className="mt-4 h-px bg-gradient-to-r from-pink-400/60 via-white/10 to-transparent w-full" />
                     <p className="mt-4 text-gray-600 text-sm max-w-xl border-l border-white/10 pl-4">
-                        A collection of projects showcasing my expertise in full-stack development
+                        Selected work showing full-stack development, real-time features, dashboards, authentication, and responsive UI.
                     </p>
                 </div>
 
@@ -421,7 +446,7 @@ const Landing = () => {
             <footer className="relative z-10 w-full max-w-7xl mx-auto px-6 py-10 border-t border-white/10">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                     <div className="text-xs text-gray-700">
-                        <span className="text-green-400">$</span> © 2024 Muhammed Swalih MC — All rights reserved.
+                        <span className="text-green-400">$</span> © 2026 Muhammed Swalih MC - All rights reserved.
                     </div>
                     <div className="flex items-center gap-3">
                         {[
