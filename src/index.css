@@ -1,1 +1,25 @@
 @import "tailwindcss";
+
+@theme {
+  /* ── palette ── */
+  --color-cream: #f4f0e5;
+  --color-charcoal: #202326;
+  --color-accent: #f15a24;
+  --color-beige: #d8d2c4;
+  --color-surface: #ffffff;
+
+  /* ── type ── */
+  --font-display: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-hand: "Caveat", ui-serif, cursive;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-charcoal);
+  }
+}
